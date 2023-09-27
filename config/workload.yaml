@@ -13,14 +13,3 @@ spec:
       url: ssh://git@github.com/Mpluya/greeter-source-package.git
       ref:
         branch: main
-  env:
-    - name: configey
-      valueFrom: 
-        configMapKeyRef:
-          name: special-config
-          key: key
-    - name: secretey
-      valueFrom: 
-        secretKeyRef:
-          name: special-secret
-          key: key

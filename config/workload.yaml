@@ -7,9 +7,19 @@ metadata:
     app.kubernetes.io/part-of: greeter-source-package
     apps.tanzu.vmware.com/carvel-package-workflow: "true"
     apps.tanzu.vmware.com/workload-type: server
+    apps.tanzu.vmware.com/has-tests: "true"
 spec:
   source:
     git:
       url: ssh://git@github.com/Mpluya/greeter-source-package.git
       ref:
         branch: main
+  params:
+    - name: scanning_source_policy
+      value: source-scan-policy
+    - name: scanning_image_policy
+      value: lax-scan-policy
+    - name: testing_pipeline_matching_labels
+      value:
+        apps.tanzu.vmware.com/pipeline: test
+        apps.tanzu.vmware.com/language: java
